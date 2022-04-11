@@ -22,6 +22,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        floatingActionButtonTheme:
+            FloatingActionButtonThemeData(backgroundColor: Colors.deepOrange),
+        primarySwatch: Colors.deepOrange,
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
           iconTheme: IconThemeData(
@@ -41,13 +44,15 @@ class MyApp extends StatelessWidget {
             type: BottomNavigationBarType.fixed,
             selectedItemColor: Colors.deepOrange,
             elevation: 20.0),
-        primarySwatch: Colors.blue,
       ),
       darkTheme: ThemeData(
         scaffoldBackgroundColor: Colors.black26,
       ),
       themeMode: ThemeMode.light,
-      home: NewsLayout(),
+      home: Directionality(
+        child: NewsLayout(),
+        textDirection: TextDirection.rtl,
+      ),
     );
   }
 }
