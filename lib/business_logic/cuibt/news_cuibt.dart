@@ -32,17 +32,17 @@ class NewsCuibt extends Cubit<NewsState> {
       icon: Icon(Icons.science),
       label: 'Science',
     ),
-    const BottomNavigationBarItem(
-      icon: Icon(Icons.settings),
-      label: 'Settings',
-    ),
+    // const BottomNavigationBarItem(
+    //   icon: Icon(Icons.settings),
+    //   label: 'Settings',
+    // ),
   ];
 
   List<Widget> screens = [
     BuinessScreen(),
     SportScreen(),
     ScienceScreen(),
-    SittingsScreen(),
+    // SittingsScreen(),
   ];
   void changeBottomNavBar(int index) {
     currentIndex = index;
@@ -113,5 +113,12 @@ class NewsCuibt extends Cubit<NewsState> {
     } else {
       emit(NewsGetScienceSuccessState());
     }
+  }
+
+  bool isDark = false;
+
+  void appTogleMode() {
+    isDark = !isDark;
+    emit(NewsGChangeModeState());
   }
 }

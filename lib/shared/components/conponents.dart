@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget buildArticaleItem(article) => Padding(
+Widget buildArticaleItem(article, context) => Padding(
       padding: const EdgeInsets.all(20.0),
       child: Row(
         children: [
@@ -28,8 +28,7 @@ Widget buildArticaleItem(article) => Padding(
                   Expanded(
                     child: Text(
                       '${article['title']}',
-                      style: TextStyle(
-                          fontSize: 18.0, fontWeight: FontWeight.w600),
+                      style: Theme.of(context).textTheme.bodyText1,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                     ),
