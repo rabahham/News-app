@@ -19,7 +19,7 @@ class ScienceScreen extends StatelessWidget {
                   itemBuilder: (context, index) =>
                       buildArticaleItem(list[index], context),
                   separatorBuilder: (context, index) => Divider(),
-                  itemCount: 10)
+                  itemCount: list.length)
               : Center(
                   child: CircularProgressIndicator(),
                 );

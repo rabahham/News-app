@@ -7,8 +7,9 @@ import 'package:news_app/business_logic/cuibt/news_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/screens/bussiness/bussiness_screen.dart';
 import 'package:news_app/screens/science/science_screen.dart';
-import 'package:news_app/screens/settinngs/sittings_screen.dart';
+
 import 'package:news_app/screens/sports/sport_screen.dart';
+import 'package:news_app/shared/network/local/chach_hlepr.dart';
 import 'package:news_app/shared/network/remote/dio_helper.dart';
 
 // https://newsapi.org/v2/top-headlines?country=eg&category=business&apiKey=65f7f556ec76449fa7dc7c0069f040ca
@@ -120,5 +121,8 @@ class NewsCuibt extends Cubit<NewsState> {
   void appTogleMode() {
     isDark = !isDark;
     emit(NewsGChangeModeState());
+    // CacheHelper.putBool(key: 'isDark', value: isDark).then((value) {
+    //   emit(NewsGChangeModeState());
+    // });
   }
 }
