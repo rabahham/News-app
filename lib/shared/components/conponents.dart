@@ -55,3 +55,49 @@ Widget buildArticaleItem(article, context) => InkWell(
         ),
       ),
     );
+
+Widget textdField({
+  required TextEditingController controller,
+  required String hintText,
+  TextInputType keyboardType = TextInputType.text,
+  bool autofocus = false,
+  required Icon prefixIconicon,
+  double borderRadius = 10,
+  int maxlines = 1,
+  var onchange,
+}) =>
+    TextFormField(
+        maxLines: maxlines,
+        autofocus: autofocus,
+        controller: controller,
+        keyboardType: keyboardType,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return ("$hintText must not be  empty");
+          }
+
+          return null;
+        },
+        onChanged: onchange,
+        onSaved: (value) {
+          controller.text = value!;
+        },
+        textInputAction: TextInputAction.done,
+        decoration: InputDecoration(
+          iconColor: Colors.grey,
+          prefixIcon: prefixIconicon,
+          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+          hintText: hintText,
+          hintStyle: TextStyle(
+            color: Colors.grey,
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(borderRadius),
+            // borderSide: BorderSide(
+            //   color: Colors.grey,
+            // ),
+          ),
+        ));
+
+void NavigateTo(context, widgets) => Navigator.of(context)
+    .push(MaterialPageRoute(builder: (context) => widgets));

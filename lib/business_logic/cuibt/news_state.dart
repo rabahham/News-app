@@ -22,6 +22,15 @@ class NewsGetSportErrorState extends NewsState {
   NewsGetSportErrorState(this.error);
 }
 
+class NewsGetSearchSuccessState extends NewsState {}
+
+class NewsGetSearchLodingState extends NewsState {}
+
+class NewsGetSearchErrorState extends NewsState {
+  late final String error;
+  NewsGetSearchErrorState(this.error);
+}
+
 class NewsGetScienceSuccessState extends NewsState {}
 
 class NewsGetScienceLodingState extends NewsState {}

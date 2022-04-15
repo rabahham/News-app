@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/business_logic/cuibt/news_cuibt.dart';
 import 'package:news_app/business_logic/cuibt/news_state.dart';
+import 'package:news_app/screens/search/search_screen.dart';
+import 'package:news_app/shared/components/conponents.dart';
 
 class NewsLayout extends StatelessWidget {
   const NewsLayout({Key? key}) : super(key: key);
@@ -16,7 +18,13 @@ class NewsLayout extends StatelessWidget {
           appBar: AppBar(
             title: Text('News App'),
             actions: [
-              IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+              IconButton(
+                  onPressed: () {
+                    NavigateTo(context, SearchScreen());
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //     builder: (context) => SearchScreen()));
+                  },
+                  icon: Icon(Icons.search)),
               IconButton(
                   onPressed: () {
                     cubit.appTogleMode();

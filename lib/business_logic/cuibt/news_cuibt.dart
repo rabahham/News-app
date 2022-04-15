@@ -14,6 +14,8 @@ import 'package:news_app/shared/network/remote/dio_helper.dart';
 
 // https://newsapi.org/v2/top-headlines?country=eg&category=business&apiKey=65f7f556ec76449fa7dc7c0069f040ca
 
+// https://newsapi.org/v2/everything?q=tesla&apikey=65f7f556ec76449fa7dc7c0069f040ca
+
 class NewsCuibt extends Cubit<NewsState> {
   NewsCuibt() : super(NewsInitailState());
   static NewsCuibt get(context) => BlocProvider.of(context);
@@ -33,6 +35,7 @@ class NewsCuibt extends Cubit<NewsState> {
       icon: Icon(Icons.science),
       label: 'Science',
     ),
+
     // const BottomNavigationBarItem(
     //   icon: Icon(Icons.settings),
     //   label: 'Settings',
@@ -114,6 +117,25 @@ class NewsCuibt extends Cubit<NewsState> {
     } else {
       emit(NewsGetScienceSuccessState());
     }
+  }
+
+  List<dynamic> search = [];
+
+  void getSearch(String value) {
+    emit(NewsGetSearchLodingState());
+    search = [];
+
+    DioHelper.getData(url: 'v2/everything', query: {
+      'q': '$value',
+      'apiKey': '65f7f556ec76449fa7dc7c0069f040ca',
+    }).then((value) {
+      search = value?.data['articles'];
+      //  print(business[0]['title']);
+      emit(NewsGetSearchSuccessState());
+    }).catchError((error) {
+      print(error.toString());
+      emit(NewsGetSearchErrorState(error.toString()));
+    });
   }
 
   bool isDark = false;
